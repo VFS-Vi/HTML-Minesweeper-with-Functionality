@@ -1,0 +1,183 @@
+* {
+    font-family: sans-serif;
+    font-weight: bold;
+    margin: 0;
+    padding: 0;
+}
+
+.flex {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+/* #region Default Tags*/
+body {
+    background-color: #69646a;
+}
+
+header {
+    padding: 10px;
+    background-color: #504d51;
+}
+    header h1 {
+        text-align: center;
+        font-size: 50px;
+    }
+
+main {
+    
+}
+
+footer {
+    background-color: #504d51;
+    width: 100%;
+}
+
+ul {
+    list-style-type: none;
+}
+
+a {
+    text-decoration: none;
+}
+button:hover {
+    cursor: pointer;
+}
+/* #endregion*/
+
+.nav-bar {
+
+}
+    .nav-bar ul {
+        
+        background-color: #504d51;
+    }
+    .nav-bar li{
+        margin-left: 10px;
+    }
+    .nav-bar button {
+        padding: 5px;
+        background-color: #504d51;
+        border-style: solid;
+        color: white;
+        font-size: 25px;
+    }
+        .nav-bar button:hover {
+            cursor: pointer;
+            background-color: #2a2a2a;
+            color: white;
+        }
+
+.side-bar {
+    margin: 40px;
+    margin-top: 20px;
+}
+    .side-bar #content {
+        padding: 20px;
+        margin: 10px;
+        background-color: #818181;
+    }
+
+
+#game-holder {
+    margin: 100px;
+    margin-top: 20px;
+    margin-right: 0px;
+    text-align: left;
+    width: fit-content;
+    flex-direction: column;
+    background-color: #504d51;
+}
+    #game-holder #game-nav-bar {
+        justify-content: space-between;
+        border: 5px solid #373737;
+    }
+
+#game-nav-bar li{
+    font-size: 30px;
+}
+#game-nav-bar #flags {
+    color: red;
+}
+#game-nav-bar #reset {
+    font-size: 30px;
+    border-style: none;
+    background-color: #b7b7b7;
+}
+    #game-nav-bar #reset:hover {
+        border-style: none;
+        background-color: #6b6b6b;
+        color: white;
+    }
+#game-nav-bar #timer{
+
+}
+
+#board {
+    width: 800px;
+    height: 500px;
+/*delete width and height when implementing game logic*/
+    display: grid;
+    grid-template-columns: repeat(8, 50px);
+    grid-gap: 5px;
+    padding: 10px;
+}
+
+
+
+.cell {
+    width: 50px;
+    height: 50px;
+    background: #fff;
+    background-image: url(https://img.itch.zone/aW1hZ2UvMjAzMTU4Mi8xMTk0NzkwMy5qcGVn/original/ruydQ4.jpeg);
+    background-size: 525%;
+    background-position: bottom -4px left -56px;
+    border: 2px solid #69646a;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+/*Not using for box Model*/
+/* #region Minesweeper Squares/Tiles*/
+.square-blank {
+
+}
+.square-bombFlagged {
+
+}
+.square-bombRevealed {
+
+}
+.square-bombDeath {
+
+}
+.square-open0 {
+
+} 
+.square-open1 {
+
+} 
+.square-open2 {
+
+} 
+.square-open3 {
+
+} 
+.square-open4 {
+
+} 
+.square-open5 {
+
+} 
+.square-open6 {
+
+} 
+.square-open7 {
+
+} 
+.square-open8 {
+
+}
+/* #endregion */

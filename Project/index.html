@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html land="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="Minesweeper" content="width=device-width, initial-scale=1.0" />
+    <link href="style.css" rel="stylesheet" />
+    <title>Minesweeper</title>
+</head>
+<body>
+    <header>
+        <h1>Minesweeper</h1>
+        <nav class="nav-bar">
+            <ul class="flex">
+                <!--Will change the board itself-->
+                <li><button>Easy</button></li>
+                <li><button>Normal</button></li>
+                <li><button>Hard</button></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!---->
+    <main class="flex">
+        <div id="game-holder">
+            <!--Remove <p> when implementing logic-->
+            <ul class="flex" id="game-nav-bar">
+                <!--Flag Count-->
+                <li id="flags">10</li>
+                <li><button id="reset">Reset Game</button></li>
+                <li id="timer">99</li>
+            </ul>
+            <div class="flex" id="board"><p>THIS IS WHERE MINE SWEEPER WILL BE</p></div>
+            
+        </div>
+        <aside>
+            <section class="side-bar">
+                <article id="content">
+                    <h2>How to play Minesweeper !</h2>
+                    <p>
+                        <br />
+                        1. Select a square on the playing grid<br /><br />
+                        2. An open square with a number in it indicates how<br />many bombs are around that square<br /><br />
+                        4. Deduce where the bombs with the those number<br /><br />
+                        5. Right-click to flag unoponed squared to remember<br />they are bombs<br /><br />
+                        6. Open all the safe squares without finding a bomb
+                    </p>
+                </article>
+                <article id="content">
+                    <h2>HIGH SCORE !</h2>
+                    <p id="high-score">Time: 000s</p>
+                </article>
+            </section>
+        </aside>
+    </main>
+    
+    <!---->
+    <footer>
+        <p>&copy; 2025 Vi's Minesweeper All Rights Reserved.</p>
+    </footer>
+
+<!--uncommment when doing logic for minesweeper-->
+    <!--<script src="script.js"></script>-->
+</body>
+</html>
