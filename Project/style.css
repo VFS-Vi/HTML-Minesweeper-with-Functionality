@@ -114,25 +114,26 @@ button:hover {
 }
 
 #board {
-    width: 800px;
-    height: 500px;
+/*    width: 800px;
+    height: 500px;*/
 /*delete width and height when implementing game logic*/
     display: grid;
-    grid-template-columns: repeat(8, 50px);
-    grid-gap: 5px;
+    grid-template-columns: repeat(9, 30px);
+/*    grid-gap: 4px;*/
     padding: 10px;
 }
 
 
 
 .cell {
-    width: 50px;
-    height: 50px;
+    width: 30px;
+    height: 30px;
     background: #fff;
-    background-image: url(https://img.itch.zone/aW1hZ2UvMjAzMTU4Mi8xMTk0NzkwMy5qcGVn/original/ruydQ4.jpeg);
-    background-size: 525%;
-    background-position: bottom -4px left -56px;
-    border: 2px solid #69646a;
+    background-image: url(imgs/minesweeperTileSet.jpeg);
+    background-size: 526.66666666667%;
+    background-position: 0px 0px;
+    background-origin: border-box;
+    background-repeat: no-repeat;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -142,42 +143,42 @@ button:hover {
 /*Not using for box Model*/
 /* #region Minesweeper Squares/Tiles*/
 .square-blank {
-
+    background-position: 25% 100%;
 }
 .square-bombFlagged {
-
+    background-position: 0% 100%;
 }
 .square-bombRevealed {
-
+    background-position: 100% 100%;
 }
 .square-bombDeath {
-
+    background-position: 100% 50%;
 }
 .square-open0 {
-
-} 
+    background-position: 75% 50%;
+}
 .square-open1 {
-
-} 
+    background-position: 0% 0px;
+}
 .square-open2 {
-
-} 
+    background-position: 25% 0px;
+}
 .square-open3 {
-
-} 
+    background-position: 50% 0px;
+}
 .square-open4 {
-
-} 
+    background-position: 75% 0px;
+}
 .square-open5 {
-
-} 
+    background-position: 100% 0px;
+}
 .square-open6 {
-
-} 
+    background-position: 0px 50%;
+}
 .square-open7 {
-
-} 
+    background-position: 25% 50%;
+}
 .square-open8 {
-
+    background-position: 50% 50%;
 }
 /* #endregion */

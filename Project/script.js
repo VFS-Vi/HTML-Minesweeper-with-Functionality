@@ -1,6 +1,6 @@
 class TicTacToe {
     constructor() {
-        this.board = Array(64).fill('')// arrays in js are dynamic
+        this.board = Array(81).fill('')// arrays in js are dynamic
 
         this.isGameOver = false;
 
@@ -19,6 +19,7 @@ class TicTacToe {
         this.board.map((_, index) => {
             const cell = document.createElement('div');
             cell.classList.add('cell');
+            cell.classList.add('square-blank');
             cell.dataset.index = index;
 
             cell.addEventListener('click', () => this.openSquare(index)); /// () => stores it 
