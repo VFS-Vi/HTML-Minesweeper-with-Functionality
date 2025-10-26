@@ -118,7 +118,10 @@ button:hover {
     height: 500px;*/
 /*delete width and height when implementing game logic*/
     display: grid;
-    grid-template-columns: repeat(9, 30px);
+    grid-template-rows: repeat(16, 30px);
+/* y   */
+    grid-template-columns: repeat(24, 30px);
+/* x   */
 /*    grid-gap: 4px;*/
     padding: 10px;
 }
@@ -145,13 +148,13 @@ button:hover {
 .square-blank {
     background-position: 25% 100%;
 }
-.square-bombFlagged {
+.square-flagged {
     background-position: 0% 100%;
 }
-.square-bombRevealed {
+.square-mineRevealed {
     background-position: 100% 100%;
 }
-.square-bombDeath {
+.square-mineDeath {
     background-position: 100% 50%;
 }
 .square-open0 {
