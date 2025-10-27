@@ -118,9 +118,9 @@ button:hover {
     height: 500px;*/
 /*delete width and height when implementing game logic*/
     display: grid;
-    grid-template-rows: repeat(16, 30px);
+    grid-template-rows: repeat(var(--rows), 30px);
 /* y   */
-    grid-template-columns: repeat(24, 30px);
+    grid-template-columns: repeat(var(--cols), 30px);
 /* x   */
 /*    grid-gap: 4px;*/
     padding: 10px;

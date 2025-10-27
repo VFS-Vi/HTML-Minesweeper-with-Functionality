@@ -1,22 +1,21 @@
 class Board {
-    constructor(rows, cols) {
+    constructor(rows, cols, numberOfMines, boardEl) {
         this.rows = rows;
         this.cols = cols;
+        this.totalMines = numberOfMines;
+        this.minesLeft = this.totalMines;
+        this.unopenedCells = this.rows * this.cols;
 
-        this.board = Array(this.rows * this.cols).fill('1')// arrays in js are dynamic
-
-        this.isGameOver = false;
+        this.board = Array(this.rows * this.cols).fill(0)
 
         this.cells = [];
 
-        this.boardEl = document.querySelector('#board');
-        this.resetBtn = document.querySelector('#reset');
-
-        this.init()
+        this.boardEl = boardEl;
     };
 
-    init = () => {
+    initializeBoard() {
         this.boardEl.innerHTML = '';
+
         this.cells = [];
 
         this.board.map((_, index) => {
@@ -24,84 +23,25 @@ class Board {
             cell.classList.add('cell');
             cell.classList.add('square-blank');
             cell.dataset.index = index;
-            //cell.addEventListener('click', () => this.openSquare(index));
-            //cell.addEventListener('contextmenu', () => this.flagSquare(index));
 
             this.boardEl.appendChild(cell);
             this.cells.push(cell);
         });
-
-        this.resetBtn.addEventListener('click', this.resetGame); /// nothing needs to be passed through
+        this.boardEl.style.setProperty('--rows', this.rows);
+        this.boardEl.style.setProperty('--cols', this.cols);
     };
 
-    openSquare = (index) => {
-        if (this.cells[index].classList.item(1) !== 'square-flagged') {
-            switch (this.board[index]) {
-                case 'B':
-                    this.cells[index].classList.remove(this.cells[index].classList.item(1));
-                    this.cells[index].classList.add('square-blank');
-                    break;
-                case 'M':
-                    this.cells[index].classList.remove(this.cells[index].classList.item(1));
-                    this.cells[index].classList.add('square-mineDeath');
-                    break;
-                case '0':
-                    this.cells[index].classList.remove(this.cells[index].classList.item(1));
-                    this.cells[index].classList.add('square-open0');
-                    break;
-                case '1':
-                    this.cells[index].classList.remove(this.cells[index].classList.item(1));
-                    this.cells[index].classList.add('square-open1');
-                    break;
-                case '2':
-                    this.cells[index].classList.remove(this.cells[index].classList.item(1));
-                    this.cells[index].classList.add('square-open2');
-                    break;
-                case '3':
-                    this.cells[index].classList.remove(this.cells[index].classList.item(1));
-                    this.cells[index].classList.add('square-open3');
-                    break;
-                case '4':
-                    this.cells[index].classList.remove(this.cells[index].classList.item(1));
-                    this.cells[index].classList.add('square-open4');
-                    break;
-                case '5':
-                    this.cells[index].classList.remove(this.cells[index].classList.item(1));
-                    this.cells[index].classList.add('square-open5');
-                    break;
-                case '6':
-                    this.cells[index].classList.remove(this.cells[index].classList.item(1));
-                    this.cells[index].classList.add('square-open6');
-                    break;
-                case '7':
-                    this.cells[index].classList.remove(this.cells[index].classList.item(1));
-                    this.cells[index].classList.add('square-open7');
-                    break;
-                case '8':
-                    this.cells[index].classList.remove(this.cells[index].classList.item(1));
-                    this.cells[index].classList.add('square-open8');
-                    break;
-            }
+    resetGame() {
+        this.board = Array(this.rows * this.cols).fill(0)
+        this.unopenedCells = this.rows * this.cols;
+        this.minesLeft = this.totalMines;
+
+        for (const cell of this.cells) {
+            cell.classList.remove(cell.classList.item(1));
+            cell.classList.add('square-blank');
         }
-    };
 
-    flagSquare = (index) => {
-        if (this.cells[index].classList.item(1) === 'square-blank') {
-            this.cells[index].classList.remove(this.cells[index].classList.item(1));
-            this.cells[index].classList.add('square-flagged');
-        }
-        else if (this.cells[index].classList.item(1) === 'square-flagged') {
-            this.cells[index].classList.remove(this.cells[index].classList.item(1));
-            this.cells[index].classList.add('square-blank');
-        }
-    };
-
-    resetGame = () => {
-        this.board = Array(this.rows * this.cols).fill('0')// arrays in js are dynamic
-
-        this.isGameOver = false;
-
-        //this.cells.forEach(cell => cell.textContent = '');
+        this.initializeBoard();
     }
 
 }

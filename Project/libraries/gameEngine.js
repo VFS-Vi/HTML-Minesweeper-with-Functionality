@@ -5,8 +5,12 @@ import UserInput from '../modules/userInput.js';
 class GameEngine {
     constructor() {
         // Decorator pattern.
-        this.gameBoard = new Board(16, 24);
+        this.boardEl = document.querySelector('#board');
+
+        this.gameBoard = new Board(9, 9, 10, this.boardEl);
+        this.gameBoard.initializeBoard();
         this.gameLogic = new GameLogic(this.gameBoard);
+        
         this.userInput = new UserInput(this.gameLogic);
     }
 }
