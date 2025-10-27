@@ -37,23 +37,30 @@ class Logic {
     };
 
     openSquare(index) {
-        const value = this.gameBoard.board[index];
-        this.gameBoard.cells[index].classList.remove(this.gameBoard.cells[index].classList.item(1));
-        if (value === -1) return; 
-        this.gameBoard.cells[index].classList.add(`square-open${value}`);
+        const cell = this.gameBoard.cells[index];
+        const currentClass = cell.classList.item(1);
 
-        this.gameBoard.unopenedCells--
+        if (currentClass !== 'square-blank') return;
+
+        cell.classList.remove(currentClass);
+        cell.classList.add(`square-open${this.gameBoard.board[index]}`);
+
+        this.gameBoard.unopenedCells--;
         this.checkWin();
     }
 
     openMine(index) {
         this.gameOver = true;
-        this.minePositions.forEach((e) => {
-            this.gameBoard.cells[e].classList.remove(this.gameBoard.cells[e].classList.item(1));
-            this.gameBoard.cells[e].classList.add('square-mineRevealed');
-        });
+        this.revealAllMines();
         this.gameBoard.cells[index].classList.remove(this.gameBoard.cells[index].classList.item(1));
         this.gameBoard.cells[index].classList.add('square-mineDeath');
+    }
+
+    revealAllMines() {
+        this.minePositions.forEach((e) => {
+        this.gameBoard.cells[e].classList.remove(this.gameBoard.cells[e].classList.item(1));
+        this.gameBoard.cells[e].classList.add('square-mineRevealed');
+    });
     }
 
     firstClickSquare(index) {
@@ -68,6 +75,7 @@ class Logic {
 
         const cell = this.gameBoard.cells[index];
         const current = cell.classList.item(1);
+
         if (current === 'square-flagged') {
             // Unflag cell
             cell.classList.remove(current);
@@ -130,9 +138,10 @@ class Logic {
     }
 
     recursiveOpening(index, visited = new Set()) {
-        if (visited.has(index) || this.gameBoard.cells[index].classList.item(1) === 'square-flagged') return;
+        if (visited.has(index)) return;
         visited.add(index);
 
+        if (this.gameBoard.cells[index].classList.item(1) !== 'square-blank') return;
         if (this.gameBoard.board[index] === 0) {
             const neighbours = this.getNeighbours(index);
             for (const n of neighbours) {
@@ -143,8 +152,9 @@ class Logic {
     }
 
     checkWin() {
-        if (this.gameBoard.totalMines === this.gameBoard.unopenedCells) {
-            console.log('YOU WON');
+        if (this.gameBoard.unopenedCells === this.gameBoard.totalMines) {
+            this.gameOver = true;
+            this.gameBoard.gameHolder.style.backgroundColor = '#437e57';
         }
     }
 }

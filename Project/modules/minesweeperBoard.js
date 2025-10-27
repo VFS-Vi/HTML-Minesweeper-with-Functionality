@@ -11,6 +11,7 @@ class Board {
         this.cells = [];
 
         this.boardEl = boardEl;
+        this.gameHolder = document.querySelector('#game-holder');;
     };
 
     initializeBoard() {
@@ -35,6 +36,7 @@ class Board {
         this.board = Array(this.rows * this.cols).fill(0)
         this.unopenedCells = this.rows * this.cols;
         this.minesLeft = this.totalMines;
+        this.gameHolder.style.backgroundColor = '#504d51';
 
         for (const cell of this.cells) {
             cell.classList.remove(cell.classList.item(1));
